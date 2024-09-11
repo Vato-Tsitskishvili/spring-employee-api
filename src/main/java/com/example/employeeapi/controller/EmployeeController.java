@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1/employees")
 @CrossOrigin(origins = "http://localhost:3000")
 public class EmployeeController {
 
@@ -20,17 +20,30 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping("/employees")
+    @GetMapping
     public ResponseEntity<List<Employee>> getAllEmployees() {
         return ResponseEntity.ok(employeeService.getAllEmployees());
     }
 
-    @PostMapping("/employees")
+    @GetMapping("/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") long id) {
+        return ResponseEntity.ok(employeeService.getEmployeeById(id));
+    }
+
+    @PostMapping
     public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
         return new ResponseEntity<>(employeeService.createEmployee(employee), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/employees/{id}")
+    @PutMapping("/{id}")
+    public ResponseEntity<Employee> updateEmployeeById(
+            @PathVariable("id") long id,
+            @RequestBody Employee employee
+    ) {
+        return ResponseEntity.ok(employeeService.updateEmployeeById(id, employee));
+    }
+
+    @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteEmployeeById(@PathVariable("id") long id) {
         return ResponseEntity.ok(Map.of("deleted", employeeService.deleteEmployeeById(id)));
     }

@@ -41,4 +41,22 @@ public class EmployeeService {
 
         return true;
     }
+
+    public Employee getEmployeeById(long id) {
+        EmployeeEntity employeeEntity = employeeRepository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee with that id doesn't exist"));
+
+        return EmployeeMapper.mapEntityToDto(employeeEntity);
+    }
+
+    public Employee updateEmployeeById(long id, Employee employee) {
+        EmployeeEntity employeeEntity = employeeRepository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee with that id doesn't exist"));
+        employeeEntity.setFirstName(employee.firstName());
+        employeeEntity.setLastName(employee.lastName());
+        employeeEntity.setEmailId(employee.emailId());
+
+        employeeRepository.save(employeeEntity);
+        return employee;
+    }
 }

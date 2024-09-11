@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { deleteEmployeeByIdService, getEmployeeService } from '../services/EmployeeService';
-import Employee from "./Employee";
+import Employee from './Employee';
 
 const EmployeeList = () => {
 
