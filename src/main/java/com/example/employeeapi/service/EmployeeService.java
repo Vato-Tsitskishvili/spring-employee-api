@@ -4,7 +4,12 @@ import com.example.employeeapi.mapper.EmployeeMapper;
 import com.example.employeeapi.model.dto.Employee;
 import com.example.employeeapi.model.entity.EmployeeEntity;
 import com.example.employeeapi.repository.EmployeeRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import javax.swing.text.html.parser.Entity;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class EmployeeService {
@@ -19,5 +24,12 @@ public class EmployeeService {
         EmployeeEntity employeeEntity = EmployeeMapper.mapDtoToEntity(employee);
         employeeRepository.save(employeeEntity);
         return employee;
+    }
+
+    public List<Employee> getAllEmployees() {
+        List<EmployeeEntity> allEmployeeEntities = employeeRepository.findAll();
+        return allEmployeeEntities.stream()
+                .map(EmployeeMapper::mapEntityToDto)
+                .toList();
     }
 }
