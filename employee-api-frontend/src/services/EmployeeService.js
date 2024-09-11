@@ -9,3 +9,7 @@ export const saveEmployeeService = employee => {
 export const getEmployeeService = () => {
     return axios.get(EMPLOYEE_API_BASE_URL);
 }
+
+export const deleteEmployeeByIdService = (id) => {
+    return axios.delete(EMPLOYEE_API_BASE_URL + "/" + id);
+}

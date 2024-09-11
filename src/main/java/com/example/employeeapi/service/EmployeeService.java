@@ -1,5 +1,6 @@
 package com.example.employeeapi.service;
 
+import com.example.employeeapi.exceptions.EmployeeNotFoundException;
 import com.example.employeeapi.mapper.EmployeeMapper;
 import com.example.employeeapi.model.dto.Employee;
 import com.example.employeeapi.model.entity.EmployeeEntity;
@@ -31,5 +32,13 @@ public class EmployeeService {
         return allEmployeeEntities.stream()
                 .map(EmployeeMapper::mapEntityToDto)
                 .toList();
+    }
+
+    public boolean deleteEmployeeById(long id) {
+        EmployeeEntity employeeEntity = employeeRepository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee with that id doesn't exist"));
+        employeeRepository.delete(employeeEntity);
+
+        return true;
     }
 }
