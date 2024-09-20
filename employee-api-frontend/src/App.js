@@ -1,4 +1,3 @@
-import './App.css';
 import Header from './components/Header';
 import AddEmployee from './components/AddEmployee';
 import EmployeeList from './components/EmployeeList';

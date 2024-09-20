@@ -24,7 +24,7 @@ const Employee = ({ employee, deleteEmployeeById }) => {
             </td>
             <td className="text-left px-6 py-4 whitespace-nowrap">
                 <div className="text-xl">
-                    {employee.emailId}
+                    {employee.email}
                 </div>
             </td>
             <td className="text-right px-6 py-4 whitespace-nowrap font-medium text-xl">

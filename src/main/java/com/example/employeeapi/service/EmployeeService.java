@@ -5,11 +5,8 @@ import com.example.employeeapi.mapper.EmployeeMapper;
 import com.example.employeeapi.model.dto.Employee;
 import com.example.employeeapi.model.entity.EmployeeEntity;
 import com.example.employeeapi.repository.EmployeeRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.parser.Entity;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -54,7 +51,7 @@ public class EmployeeService {
                 .orElseThrow(() -> new EmployeeNotFoundException("Employee with that id doesn't exist"));
         employeeEntity.setFirstName(employee.firstName());
         employeeEntity.setLastName(employee.lastName());
-        employeeEntity.setEmailId(employee.emailId());
+        employeeEntity.setEmail(employee.email());
 
         employeeRepository.save(employeeEntity);
         return employee;

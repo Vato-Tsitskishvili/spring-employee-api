@@ -10,7 +10,7 @@ public final class EmployeeMapper {
                 employeeEntity.getId(),
                 employeeEntity.getFirstName(),
                 employeeEntity.getLastName(),
-                employeeEntity.getEmailId()
+                employeeEntity.getEmail()
         );
     }
 
@@ -18,7 +18,7 @@ public final class EmployeeMapper {
         return new EmployeeEntity(
                 employee.firstName(),
                 employee.lastName(),
-                employee.emailId()
+                employee.email()
         );
     }
 }

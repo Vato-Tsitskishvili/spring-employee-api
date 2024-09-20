@@ -9,7 +9,7 @@ const AddEmployee = () => {
         id: '',
         firstName: '',
         lastName: '',
-        emailId: ''
+        email: ''
     });
 
     const handleChange = e => {
@@ -23,7 +23,7 @@ const AddEmployee = () => {
                 console.log(response);
                 navigate('/');
             })
-            .catch(error => console.error(error));
+            .catch(() => window.alert("hello this is error"));
     }
 
     const reset = e => {
@@ -32,7 +32,7 @@ const AddEmployee = () => {
             id: '',
             firstName: '',
             lastName: '',
-            emailId: ''
+            email: ''
         });
     }
 
@@ -73,8 +73,8 @@ const AddEmployee = () => {
                     <input
                         type="email"
                         className="h-10 w-96 border mt-2 px-2 py-2"
-                        name="emailId"
-                        value={employee.emailId}
+                        name="email"
+                        value={employee.email}
                         onChange={e => handleChange(e)}
                     />
                 </div>

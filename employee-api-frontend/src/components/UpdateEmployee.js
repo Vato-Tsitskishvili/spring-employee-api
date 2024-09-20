@@ -10,17 +10,18 @@ const UpdateEmployee = () => {
         id: id,
         firstName: '',
         lastName: '',
-        emailId: ''
+        email: ''
     });
 
     useEffect(() => {
         const fetchData = async () => {
             await getEmployeeByIdService(id)
                 .then(response => setEmployee(response.data))
-                .catch(err => console.error(err));
+                .catch(console.error);
         }
-        fetchData();
-    }, [])
+        fetchData()
+            .catch(console.error);
+    }, [id])
 
     const handleChange = e => {
         const value = e.target.value;
@@ -32,7 +33,7 @@ const UpdateEmployee = () => {
         console.log(employee);
         updateEmployeeByIdService(id, employee)
             .then(() => navigate('/'))
-            .catch(err => console.error(err));
+            .catch(console.error);
     }
 
     return (
@@ -72,8 +73,8 @@ const UpdateEmployee = () => {
                     <input
                         type="email"
                         className="h-10 w-96 border mt-2 px-2 py-2"
-                        name="emailId"
-                        value={employee.emailId}
+                        name="email"
+                        value={employee.email}
                         onChange={e => handleChange(e)}
                     />
                 </div>

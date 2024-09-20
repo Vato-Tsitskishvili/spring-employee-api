@@ -15,11 +15,13 @@ const EmployeeList = () => {
 
             await getEmployeeService()
                 .then(response => setEmployees(response.data))
-                .catch(err => console.error(err));
+                .catch(console.error);
 
             setLoading(false);
         }
-        fetchData();
+
+        fetchData()
+            .catch(console.error);
     }, [])
 
     const deleteEmployeeById = (e, id) => {
@@ -32,7 +34,7 @@ const EmployeeList = () => {
                     });
                 }
             })
-            .catch(err => console.error(err));
+            .catch(console.error);
     }
 
     return (
@@ -56,7 +58,7 @@ const EmployeeList = () => {
                                 Last Name
                             </th>
                             <th className="text-left font-medium uppercase tracking-wider py-3 px-6">
-                                Email ID
+                                Email
                             </th>
                             <th className="text-right font-medium uppercase tracking-wider py-3 px-6">
                                 Actions
